@@ -14,17 +14,13 @@ public class KadaiFirstController {
     @GetMapping("/dayofweek/{date}")
     public String dispDayOfWeek(@PathVariable String date) {
         try {
-            // Parse the input date string
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
             LocalDate localDate = LocalDate.parse(date, formatter);
 
-            // Get the day of the week
             DayOfWeek dayOfWeek = localDate.getDayOfWeek();
 
-            // Return the day of the week as a string
             return "指定日 " + date + " の曜日は: " + dayOfWeek.toString();
         } catch (Exception e) {
-            // Handle invalid date formats
             return "エラー: 日付形式が正しくありません (例: 20191231)";
         }
     }
